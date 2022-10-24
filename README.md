@@ -26,9 +26,9 @@ Convenience fee -0.2%
 Purchase class:
 For a purchase, the necessary fields are
 1) Date 
-2)Purchase card
-3)Amount paid 
-4)Retrieve the amount based on the card used 
-5)Convenience amount on the purchase 
-6)Billing cycle in which the transaction fits (“Every month is a different billing cycle example “01-01-2023,01-31-2023””)
-7)Status to check whether the transaction is paid or due
+2) Purchase card
+3) Amount paid 
+4) Retrieve the amount based on the card used 
+5) Convenience amount on the purchase 
+6) Billing cycle in which the transaction fits (“Every month is a different billing cycle example “01-01-2023,01-31-2023””)
+7) Status to check whether the transaction is paid or due
