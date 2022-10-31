@@ -7,18 +7,18 @@ private:
 	int purchaseDate;
 	std::string purchaseCard;
 	double purchaseAmount;
-	double amountPaid;
+	//cardAmount = purchaseAmount + convenienceAmount
 	double cardAmount;
 	double convenienceAmount;
 	int billingCycle;
 	bool transactionStatus;
 
 public:
+	bool operator< (const Purchase& other)const;
 	//Setter Functions
 	void setPurchaseDate(int pDate);
 	void setPurchaseCard(std::string pCard);
 	void setPurchaseAmount(double pAmount);
-	void setAmountPaid(double aPaid);
 	void setCardAmount(double cAmount);
 	void setConvenienceAmount(double convAmount);
 	void setBillingCycle(int bCycle);
@@ -27,7 +27,6 @@ public:
 	int getPurchaseDate();
 	std::string getPurchaseCard();
 	double getPurchaseAmount();
-	double getAmountPaid();
 	double getCardAmount();
 	double getConvenienceAmount();
 	int getBillingCycle();
