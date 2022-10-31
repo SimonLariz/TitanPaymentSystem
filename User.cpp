@@ -1,5 +1,42 @@
 #include <iostream>
+#include <string>
+
 #include "User.h"
+
+void addPurchase(std::string date, std::string card, std::string purchaseAmount, std::string amountPaid) {
+	Purchase newPurchase;
+	int purchaseDate = stoi(date);
+	double amountDouble = stod(purchaseAmount);
+	double paidDouble = stod(amountPaid);
+	double convenienceFee;
+
+	if (card == "AMEX") {
+		convenienceFee = 0.008;
+	}
+	else if (card == "VISA") {
+		convenienceFee = 0.01;
+	}
+	else {
+		convenienceFee = 0.005;
+	}
+
+	bool purchaseStatus = false;
+
+
+	//Set Purchase Information
+	newPurchase.setPurchaseDate(purchaseDate);
+	newPurchase.setPurchaseCard(card);
+	newPurchase.setPurchaseAmount(amountDouble);
+	newPurchase.setAmountPaid(paidDouble);
+	newPurchase.setCardAmount(amountDouble * (1 + convenienceFee));
+	newPurchase.setConvenienceAmount(convenienceFee);
+
+	//Billing cycle
+	//Status
+
+
+
+}
 
 //Setter Functions
 void User::setFirstName(std::string firstName) {
