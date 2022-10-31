@@ -61,3 +61,7 @@ bool Purchase::operator< (const Purchase& other)const {
 	return purchaseAmount < other.purchaseAmount;
 }
 
+void Purchase::printPurchase() {
+	std::cout << "Date: " << purchaseDate << " Amount: " << purchaseAmount << " Card Fee: " << cardAmount << " Convenience Fee: " << convenienceAmount << '\n\n';
+}
+
