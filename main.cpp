@@ -54,15 +54,16 @@ int main() {
 
         std::cout << "Enter Choice Number: "; std::cin >> choice;
 
+
         switch (choice) {
-            //User information
+            //User information (DONE)
             case 1:
                 Account_Query();
                 main();
                 break;
-            //Add Purchase
+            //Add Purchase (DONE)
             case 2:
-                addPurchaseUser(currentUser);
+                currentUser = addPurchaseUser(currentUser);
                 break;
             //Add Purchase from file
             case 3:
@@ -70,15 +71,18 @@ int main() {
             //Payment history
             case 4:
                 break;
-            //View purchases
+            //View purchases (DONE)
             case 5:
+                viewPurchases(currentUser);
                 break;
-            //Log out
+            //Log out (DONE)
             case 6:
+                logged_in = false;
+                main();
                 break;
 
             default:
-                cout << "Please select an option between 1 - 5";
+                cout << "Please select an option between 1 - 6\n";
         }
     }
 
