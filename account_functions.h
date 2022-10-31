@@ -120,7 +120,7 @@ User Login() {
 };
 
 
-void addPurchaseUser(User currentUser) {
+User addPurchaseUser(User& currentUser) {
     std::string strDate;
     std::string purchaseCard;
     std::string purchaseAmount;
@@ -135,6 +135,7 @@ void addPurchaseUser(User currentUser) {
     currentUser.addPurchase(strDate, purchaseCard, purchaseAmount);
     currentUser.setAmountDue(currentUser.getAmountDue() + stod(purchaseAmount));
     std::cout << "Purchase added!\n";
+    return currentUser;
 }
 
 void Account_Query() {
@@ -194,5 +195,36 @@ void Account_Query() {
     else if (choice == 7) {
         std::cout << "\n\n";
         return;
+    }
+}
+
+void viewPurchases(User& currentUser) {
+    int userInput;
+    std::vector<Purchase> userPurchaseVector = currentUser.getPurchaseVect();
+    std::cout << "1) View all purchases\n";
+    std::cout << "2) View min purchase\n";
+    std::cout << "3) View max purchase\n";
+    std::cin >> userInput;
+
+    switch (userInput) {
+    case 1:
+        for (int i = 0; i < userPurchaseVector.size(); i++) {
+            userPurchaseVector[i].printPurchase();
+            std::cout << '\n';
+        }
+        break;
+    case 2:
+        std::cout << "Min Purchase: \n";
+        userPurchaseVector[0].printPurchase();
+        std::cout << '\n';
+        break;
+    case 3:
+        std::cout << "Max Purchase: \n";
+        userPurchaseVector[userPurchaseVector.size()-1].printPurchase();
+        std::cout << '\n';
+        break;
+    default:
+        std::cout << "Please make a selection between 1 - 3\n";
+        viewPurchases(currentUser);
     }
 }
