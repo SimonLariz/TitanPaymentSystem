@@ -91,3 +91,6 @@ double User::getAmountDue() {
 double User::getTotalAmountPaid() {
 	return totalAmountPaid;
 }
+std::vector<Purchase> User::getPurchaseVect() {
+	return purchaseVect;
+}
