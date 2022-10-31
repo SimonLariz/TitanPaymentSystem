@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <vector>
+#include "Purchase.h"
 
 class User {
 private:
@@ -11,8 +13,12 @@ private:
 	std::string userPassword;
 	std::string userCountry;
 	std::string userAddress;
+	std::vector<Purchase> purchaseVect;
 
 public:
+	//Adds purchase to purchase vector
+	void addPurchase(std::string date, std::string card, std::string amount, std::string status);
+
 	//Setter Functions
 	void setFirstName(std::string firstName);
 	void setLastName(std::string lastName);
