@@ -15,6 +15,7 @@ private:
 
 public:
 	bool operator< (const Purchase& other)const;
+	void printPurchase();
 	//Setter Functions
 	void setPurchaseDate(int pDate);
 	void setPurchaseCard(std::string pCard);
