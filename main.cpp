@@ -5,142 +5,87 @@
 #include<sstream>
 #include "Purchase.h"
 #include "User.h"
+#include "user_creation.h"
+#include "account_functions.h"
 
 
 using namespace std;
 
-//Unordered Map to hold users
-// phoneNumber , User
-unordered_map <string, User> usersMap;
-
-//Currently signed in user
 User currentUser;
+bool logged_in = false;
 
+int main() {
+    int choice = 0;
 
+    if (!logged_in) {
+        std::cout << "Login or Register:\n";
+        std::cout << "1) Login\n";
+        std::cout << "2) Register\n";
+        std::cout << "Enter Choice Number: "; std::cin >> choice;
 
-//Creates a new user
-void createUser() {
-    //Get user input
-    string inputFirstName, inputLastName, inputPhoneNumber, inputPassword, inputCountry, inputAddress;
-    cout << "\n To create an account please fill out the fields\n";
-    cout << "\t Please enter your First Name: ";
-    cin >> inputFirstName;
-    cout << "\t Please enter your Last Name: ";
-    cin >> inputLastName;
-    cout << "\t Please enter your Phone Number: ";
-    cin >> inputPhoneNumber;
-    cout << "\t Please enter your Password: ";
-    cin >> inputPassword;
-    cout << "\t Please enter your Country: ";
-    cin >> inputCountry;
-    cout << "\t Please enter your Address: ";
-    cin >> inputAddress;
-    
-    //Make newUser
-    User newUser;
-    newUser.setFirstName(inputFirstName);
-    newUser.setLastName(inputLastName);
-    newUser.setUserFullName(inputFirstName + " " + inputLastName);
-    newUser.setUserPhoneNumber(inputPhoneNumber);
-    newUser.setUserCountry(inputCountry);
-    newUser.setUserAddress(inputAddress);
-    
-    //Add user to usersMap
-    usersMap[inputPhoneNumber] = newUser;
-}
-
-//User sign in
-void userLogin() {
-    //Input
-    string inputPhoneNumber, inputPassword;
-    cout << "To sign please enter your credentials\n";
-    cout << "\t Enter your phone number: ";
-    cin >> inputPhoneNumber;
-    cout << "\t Enter your password: ";
-    cin >> inputPassword;
-
-    //If user exist
-    if (usersMap.find(inputPhoneNumber) != usersMap.end()) {
-        User temp = usersMap[inputPhoneNumber];
-        if (temp.getUserPassword() == inputPassword) {
-            cout << "\t Successfully signed in as " << temp.getFullName() << "\n";
-            currentUser = temp;
+        if (choice == 1) {
+            std::cout << "Login chosen\n";
+            Login();
+            logged_in = true;
+        }
+        else if (choice == 2) {
+            std::cout << "Registeration Chosen\n";
+            GetInformation();
+            main();
         }
         else {
-            cout << "\t Incorrect password\n";
+            std::cout << "Invalid choice.\n\n";
+            main();
         }
     }
-    //User doesnt exist
-    else {
-        cout << "\t No account associated with the phone number: " << inputPhoneNumber << "\n";
-    }
-}
 
-//Main menu
-void mainDisplay() {
-    int userSelection;
-    cout << "Hello, Welcome to the Titan Payment System\n\n";
-    cout << "Please select an option \n";
-    cout << "1. Create an account \n";
-    cout << "2. Sign into an Account \n";
-    cout << "3. Exit \n\n";
-    cout << "\t Make a selection: ";
-    cin >> userSelection;
+    while (logged_in) {
+        std::cout << "Currently signed in as";
+        std::cout << "Menu: \n";
+        //Done
+        std::cout << "1) User Information\n";
 
-    switch (userSelection) {
-        //Create an account
-    case 1:
-        createUser();
-        break;
-        //Login to user
-    case 2:
-        userLogin();
-        break;
-    default:
-        exit(0);
-    }
-}
+        std::cout << "2) Add Purchase \n";
+        std::cout << "3) Upload Purchase(s) from file \n";
+        std::cout << "4) View payment history \n";
+        std::cout << "5) View purchases \n";
+        std::cout << "6) Log out";
 
-//User options
-void userOptions() {
-    while (true) {
-        int userInput;
-        cout << "\n Currently signed in as: " << currentUser.getFullName() << "\n";
-        cout << "Please select an option \n";
-        cout << "1. Add purchase \n";
-        cout << "2. Upload purchases from file \n";
-        cout << "3. View minimum transaction \n";
-        cout << "4. View maximum transaction \n";
-        cout << "5. Display account information \n";
-        cout << "6. Display all transactions \n";
-        cout << "7. Sign out \n\n";
-        cout << "\t Make a selection: ";
-        cin >> userInput;
 
-        switch (userInput) {
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        case 5:
-            break;
-        case 6:
+        std::cout << "Enter Choice Number: "; std::cin >> choice;
 
-            break;
-        case 7:
-            return;
-            break;
-        default:
-            cout << "\t Please make a selection between 1 - 7 \n";
+        switch (choice) {
+            //User information
+            case 1:
+                Account_Query();
+                main();
+                break;
+            //Add Purchase
+            case 2:
+                addPurchaseUser(currentUser);
+                break;
+            //Add Purchase from file
+            case 3:
+                break;
+            //Payment history
+            case 4:
+                break;
+            //View purchases
+            case 5:
+                break;
+            //Log out
+            case 6:
+                break;
+
+            default:
+                cout << "Please select an option between 1 - 5";
         }
-
     }
 
+    return 0;
 }
+
+/*
 
 int main()
 {
@@ -176,3 +121,4 @@ int main()
 
     return 0;
 }
+*/
