@@ -12,10 +12,6 @@ void Purchase::setPurchaseCard(std::string pCard) {
 void Purchase::setPurchaseAmount(double pAmount) {
 	purchaseAmount = pAmount;
 }
-//Sets amount paid 
-void Purchase::setAmountPaid(double aPaid) {
-	amountPaid = aPaid;
-}
 //Sets card amount 
 void Purchase::setCardAmount(double cAmount) {
 	cardAmount = cAmount;
@@ -45,10 +41,6 @@ std::string Purchase::getPurchaseCard() {
 double Purchase::getPurchaseAmount() {
 	return purchaseAmount;
 }
-//Returns amountPaid
-double Purchase::getAmountPaid() {
-	return amountPaid;
-}
 //Returns cardAmount
 double Purchase::getCardAmount() {
 	return cardAmount;
@@ -65,3 +57,7 @@ int Purchase::getBillingCycle() {
 bool Purchase::gettTansactionStatus() {
 	return transactionStatus;
 }
+bool Purchase::operator< (const Purchase& other)const {
+	return purchaseAmount < other.purchaseAmount;
+}
+
