@@ -41,6 +41,8 @@ public:
 	std::string getUserPassword();
 	std::string getCountry();
 	std::string getAddress();
+	std::vector<Purchase> getPurchaseVect();
 	double getAmountDue();
 	double getTotalAmountPaid();
+
 };
